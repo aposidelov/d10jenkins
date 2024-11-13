@@ -1,0 +1,13 @@
+services:
+  web:
+    image: nginx
+    container_name: "${PROJECT_NAME}_nginx"
+    ports:
+      - "83:80"
+    links:
+      - php
+      - mysql
+    volumes:
+      - ./docker/nginx/server.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf:ro
+      - .:/var/www/html:cached

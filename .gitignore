@@ -24,6 +24,9 @@
 # Ignore .env files as they are personal
 /.env
 
+/docker-compose.override.yml
+/docker/mysql/init/*.sql
+
 # Ignore private files.
 /private-files
 /private
