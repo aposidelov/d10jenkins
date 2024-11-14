@@ -9,6 +9,8 @@ services:
       - "${PHP_PORT}:9000"
     volumes:
       - .:/var/www/html:cached
+    depends_on:
+      - mysql
 
   mysql:
     container_name: "${PROJECT_NAME}_db"
@@ -27,8 +29,9 @@ services:
     ports:
       - "${DB_PORT}:3306"
     volumes:
-      - ${PROJECT_NAME}_db_data:/var/lib/mysql:rw
+      - db_data:/var/lib/mysql:rw
       # SQL файлы для инициализации
       - ./docker/mysql/init:/docker-entrypoint-initdb.d
 volumes:
-  ${PROJECT_NAME}_db_data:
+  db_data:
+    name: ${PROJECT_NAME}_db_data
