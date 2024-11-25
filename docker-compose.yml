@@ -8,7 +8,7 @@ services:
     ports:
       - "${PHP_PORT}:9000"
     volumes:
-      - .:/var/www/html:cached
+      - ${PROJECT_PATH}:/var/www/html:cached
     depends_on:
       - mysql
 
